@@ -1,0 +1,48 @@
+class Produto {
+  constructor(id, nome, preco) {
+    this.id = id;
+    this.nome = nome;
+    this.preco = preco;
+  }
+}
+class ItemPedido {
+  constructor(produto, quantidade) {
+    this.produto = produto;
+    this.quantidade = quantidade;
+  }
+
+  calcularTotal() {
+    return this.produto.preco * this.quantidade;
+  }
+}
+class Pedido {
+  constructor(cliente) {
+    this.cliente = cliente;
+    this.itens = [];
+    this.dataPedido = new Date();
+  }
+
+  adicionarItem(item) {
+    this.itens.push(item);
+  }
+
+  calcularTotal() {
+    return this.itens.reduce((total, item) => total + item.calcularTotal(), 0);
+  }
+}
+class Cliente {
+  constructor(nome, email) {
+    this.nome = nome;
+    this.email = email;
+  }
+}
+class NotaFiscal {
+  constructor(pedido) {
+    this.pedido = pedido;
+    this.dataEmissao = new Date();
+  }
+
+  gerarNota() {
+    // Lógica para gerar a nota fiscal
+  }
+}
